@@ -5,7 +5,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 You can download the proyect and use it running the next docker image for the enviorement,inside the main project folder:
 
 ```
-docker run -it -v ${PWD}:/usr/src/app -u $(id -u):$(id -g) -p 4200:4200 mflober/angapp19-image:1.0 /bin/sh
+docker run -it -v ${PWD}:/usr/src/app -p 4200:4200 mflober/angapp19-image:1.0 /bin/sh
 
 npm install
 ```
@@ -17,7 +17,7 @@ npm install
 To start a local development server, run inside the proyect folder:
 
 ```bash
-ng serve
+ng serve --host 0.0.0.0 --poll=2000
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
