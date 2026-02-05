@@ -1,0 +1,19 @@
+<div class="container mt-4 mb-5">
+    <h2 class="mb-4 text-white">Catálogo Completo</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+        <div class="col" *ngFor="let car of cars">
+            <div class="card h-100 bg-dark text-white border-secondary">
+                <img [src]="car.image" class="card-img-top" style="height: 200px; object-fit: cover;">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ car.brand }} {{ car.model }}</h5>
+                    <span class="h4 text-primary">{{ car.price }} €</span>
+                    <button class="btn btn-outline-light btn-sm w-100 mt-2">Ver Detalles</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
