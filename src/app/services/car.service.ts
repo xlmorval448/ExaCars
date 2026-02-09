@@ -10,6 +10,14 @@ export interface Car {
   hp: number;
   year: number;
   image: string;
+  country: string;
+  type: string;
+  transmission: string;
+  drivetrain: string;
+  torque: number;
+  top_speed: number;
+  acceleration: number;
+  mass: number;
 }
 
 @Injectable({
