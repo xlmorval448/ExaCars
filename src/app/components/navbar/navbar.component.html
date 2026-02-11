@@ -7,23 +7,24 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
-
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/" routerLinkActive="active"
-                        [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+                        [routerLinkActiveOptions]="{exact: true}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/favoritos" routerLinkActive="active">Favoritos</a>
+                    <a class="nav-link" routerLink="/favourites" routerLinkActive="active">Favourites</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
                 </li>
             </ul>
 
             <form class="d-flex" role="search">
-                <input class="form-control me-2 border-primary" type="search"
-                    placeholder="Buscar coche..." aria-label="Search">
-                <button class="btn btn-outline-primary" type="button">Buscar</button>
+                <input class="form-control me-2 border-primary" type="search" placeholder="Search Car..."
+                    aria-label="Search">
+                <button class="btn btn-outline-primary" type="button">Search</button>
             </form>
-
         </div>
     </div>
 </nav>

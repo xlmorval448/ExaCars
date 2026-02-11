@@ -3,64 +3,63 @@
 
         <div class="col-lg-3">
             <div class="p-3 bg-black text-white rounded mb-4" style="top: 20px;">
-                <h4 class="mb-3 text-uppercase">Filtros</h4>
+                <h4 class="mb-3 text-uppercase">Filters</h4>
 
                 <div class="mb-3">
-                    <label class="text-white small">Marca</label>
-                    <select class="form-select bg-dark text-white" [(ngModel)]="filtroMarca">
-                        <option value="">Todas</option>
-                        <option *ngFor="let m of marcas" [value]="m">{{ m }}</option>
+                    <label class="text-white small">Brand</label>
+                    <select class="form-select bg-dark text-white" [(ngModel)]="brandFilter">
+                        <option value="">All</option>
+                        <option *ngFor="let m of brands" [value]="m">{{ m }}</option>
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <label class="text-white small">País</label>
-                    <select class="form-select bg-dark text-white" [(ngModel)]="filtroPais">
-                        <option value="">Todos</option>
-                        <option *ngFor="let p of paises" [value]="p">{{ p }}</option>
+                    <label class="text-white small">Country</label>
+                    <select class="form-select bg-dark text-white" [(ngModel)]="countryFilter">
+                        <option value="">All</option>
+                        <option *ngFor="let p of countries" [value]="p">{{ p }}</option>
                     </select>
                 </div>
 
                 <div class="mb-3">
-                    <label class="text-white small">Fecha</label>
-                    <select class="form-select bg-dark text-white" [(ngModel)]="filtroFecha">
-                        <option [ngValue]="null">Todas</option>
-                        <option *ngFor="let f of fechas" [value]="f">{{ f }}</option>
+                    <label class="text-white small">Year</label>
+                    <select class="form-select bg-dark text-white" [(ngModel)]="yearFilter">
+                        <option [ngValue]="null">All</option>
+                        <option *ngFor="let f of years" [value]="f">{{ f }}</option>
                     </select>
                 </div>
 
                 <div class="mb-4">
-                    <label class="text-white small mb-2">Potencia (CV)</label>
+                    <label class="text-white small mb-2">Power</label>
                     <div class="mb-2">
-                        <small class="text-white">Mínimo: {{ filtroCaballosMin }} cv</small>
-                        <input type="range" class="form-range" min="0" max="2000" step="50"
-                            [(ngModel)]="filtroCaballosMin">
+                        <small class="text-white"> Min: {{ minHpFilter }} hp</small>
+                        <input type="range" class="form-range" min="0" max="2000" step="50" [(ngModel)]="minHpFilter">
                     </div>
                     <div class="mb-2">
-                        <small class="text-white">Máximo: {{ filtroCaballosMax }} cv</small>
-                        <input type="range" class="form-range" min="0" max="2000" step="50"
-                            [(ngModel)]="filtroCaballosMax">
+                        <small class="text-white">Max: {{ maxHpFilter }} hp</small>
+                        <input type="range" class="form-range" min="0" max="2000" step="50" [(ngModel)]="maxHpFilter">
                     </div>
                 </div>
 
-                <button class="btn btn-outline-danger w-100" (click)="borrarFiltros()">
-                    Borrar Filtros
+                <button class="btn btn-outline-danger w-100" (click)="deleteFilters()">
+                    Clear Filters
                 </button>
             </div>
         </div>
 
         <div class="col-lg-9">
             <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col" *ngFor="let coche of cochesFiltrados">
+                <div class="col" *ngFor="let car of filteredCars">
                     <div class="card h-100 bg-dark text-white shadow-sm">
-                        <img [src]="coche.image" class="card-img-top" style="height: 220px; object-fit: cover;"
+                        <img [src]="car.image" class="card-img-top" style="height: 220px; object-fit: cover;"
                             referrerpolicy="no-referrer">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title fw-bold mb-1">{{ coche.brand }} {{ coche.model }}</h5>
+                            <h5 class="card-title fw-bold mb-1">{{ car.brand }} {{ car.model }}</h5>
+                            <h4 class="text-primary">{{ car.price }} €</h4> 
                             <div class="mt-auto">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="text-primary mb-0">{{ coche.price }} €</h4>
-                                    <button class="btn btn-outline-light btn-sm">Ver Detalles</button>
+                                <div class="card-body d-flex flex-column">
+                                    <button class="btn btn-outline-light btn-sm m-1">View Details</button>
+                                    <button class="btn btn-outline-light btn-sm m-1" (click)="addToFavs(car)">Add to Favourites</button>
                                 </div>
                             </div>
                         </div>

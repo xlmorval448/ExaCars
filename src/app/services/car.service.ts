@@ -27,7 +27,7 @@ export class CarService {
   private apiUrl = 'https://api.npoint.io/3fa9910245a279be5709'; 
 
   constructor(private http: HttpClient) { }
-
+  
   getCars(): Observable<Car[]> {
     return this.http.get<any>(this.apiUrl).pipe(
       map(response => response.cars)
