@@ -1,3 +1,23 @@
 .container-fluid {
-    padding: 7vh;
+    padding: 5vh;
+}
+
+#leMansCarousel {
+    height: 60vh;
+    width: 80vw;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 5vh;
+}
+
+.carousel-inner img {
+    height: 400px;
+    object-fit: cover;
+}
+
+.carousel-inner .carousel-caption {
+    background-color: rgb(255, 255, 255);
+    width: 35%;
+    margin: auto;
+    border: black solid 2px;
 }

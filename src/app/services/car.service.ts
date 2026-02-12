@@ -20,6 +20,11 @@ export interface Car {
   mass: number;
 }
 
+export interface Circuit {
+  name: string;
+  image: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,4 +38,10 @@ export class CarService {
       map(response => response.cars)
     );
   }
+
+  getCircuits(): Observable<Circuit[]> {
+  return this.http.get<any>(this.apiUrl).pipe(
+    map(response => response.circuits)
+  );
+}
 }

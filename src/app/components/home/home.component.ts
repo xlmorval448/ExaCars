@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Car, CarService } from '../../services/car.service';
+import { Car, CarService, Circuit } from '../../services/car.service';
 import { FavoritesService } from '../../services/favorites.service';
 
 @Component({
@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
   minHpFilter: number = 0;
   maxHpFilter: number = 2000;
 
+  circuits: Circuit[] = [];
+
   constructor(
     private carService: CarService,
     private favoritesService: FavoritesService
@@ -27,6 +29,14 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.carService.getCars().subscribe((data) => {
       this.cars = data;
+    });
+
+    this.carService.getCars().subscribe((data) => {
+      this.cars = data;
+    });
+
+    this.carService.getCircuits().subscribe((data) => {
+      this.circuits = data;
     });
   }
 
