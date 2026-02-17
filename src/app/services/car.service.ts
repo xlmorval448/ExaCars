@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, map, BehaviorSubject } from 'rxjs';
 
 export interface Car {
   id: number;
@@ -29,19 +29,32 @@ export interface Circuit {
   providedIn: 'root'
 })
 export class CarService {
-  private apiUrl = 'https://api.npoint.io/3fa9910245a279be5709'; 
+  private apiUrl = 'https://api.npoint.io/3fa9910245a279be5709';
 
   constructor(private http: HttpClient) { }
-  
+
+  private searchSubject = new BehaviorSubject<string>('');
+  search$ = this.searchSubject.asObservable();
+
+  updateSearch(term:string) {
+    this.searchSubject.next(term);
+  }
+
   getCars(): Observable<Car[]> {
     return this.http.get<any>(this.apiUrl).pipe(
       map(response => response.cars)
     );
   }
 
+  getCarById(id: number): Observable<Car | undefined> {
+    return this.getCars().pipe(
+      map(cars => cars.find(car => car.id === id))
+    );
+  }
+
   getCircuits(): Observable<Circuit[]> {
-  return this.http.get<any>(this.apiUrl).pipe(
-    map(response => response.circuits)
-  );
-}
+    return this.http.get<any>(this.apiUrl).pipe(
+      map(response => response.circuits)
+    );
+  }
 }

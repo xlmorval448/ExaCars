@@ -22,8 +22,8 @@
 
             <form class="d-flex" role="search">
                 <input class="form-control me-2 border-primary" type="search" placeholder="Search Car..."
-                    aria-label="Search">
-                <button class="btn btn-outline-primary" type="button">Search</button>
+                    aria-label="Search" [(ngModel)]="searchTerm" (input)="onSearchChange()" name="search">
+                <button class="btn btn-outline-primary" type="button" (click)="onSearchChange()">Search</button>
             </form>
         </div>
     </div>

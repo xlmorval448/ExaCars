@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Car, CarService, Circuit } from '../../services/car.service';
 import { FavoritesService } from '../../services/favorites.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+
+  searchText: string = '';
+
   cars: Car[] = [];
   brandFilter: string = '';
   countryFilter: string = '';
@@ -38,6 +42,10 @@ export class HomeComponent implements OnInit {
     this.carService.getCircuits().subscribe((data) => {
       this.circuits = data;
     });
+
+    this.carService.search$.subscribe(texto => {
+      this.searchText = texto;
+    });
   }
 
   get brands(): string[] { return [...new Set(this.cars.map(c => c.brand))].sort(); }
@@ -52,7 +60,11 @@ export class HomeComponent implements OnInit {
 
       const hpMatch = c.hp >= this.minHpFilter && c.hp <= this.maxHpFilter;
 
-      return brandMatch && countryMatch && yearMatch && hpMatch;
+      const searchMatch = this.searchText === '' || 
+                          c.brand.toLowerCase().includes(this.searchText.toLowerCase()) || 
+                          c.model.toLowerCase().includes(this.searchText.toLowerCase());
+
+      return brandMatch && countryMatch && yearMatch && hpMatch && searchMatch;
     });
   }
 

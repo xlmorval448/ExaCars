@@ -1,0 +1,22 @@
+<div class="container mt-5" *ngIf="car">
+    <div class="card bg-dark text-white">
+        <div class="row g-0">
+            <div class="col-md-6">
+                <img [src]="car.image" class="img-fluid rounded-start w-100" style="height: 100%; object-fit: cover;"
+                    alt="{{ car.brand }}">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body p-4">
+                    <h2 class="card-title fw-bold text-primary">{{ car.brand }} {{ car.model }}</h2>
+                    <hr>
+                    <p class="fs-5"><strong>Prize:</strong> {{ car.price }} €</p>
+                    <p class="fs-5"><strong>Power:</strong> {{ car.hp }} CV</p>
+                    <p class="fs-5"><strong>Year:</strong> {{ car.year }}</p>   
+                    <p class="fs-5"><strong>Country:</strong> {{ car.country }}</p>
+
+                    <a href="/" class="btn btn-outline-light mt-3">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
