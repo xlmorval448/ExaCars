@@ -11,7 +11,7 @@
 }
 
 .carousel-inner img {
-    height: 400px;
+    height: 60vh;
     object-fit: cover;
 }
 
